@@ -1,0 +1,48 @@
+spring:
+  redis:
+    host: redis-10358.c264.ap-south-1-1.ec2.redns.redis-cloud.com
+    port: 10358
+    username: default
+    password: A2IzvTWuD7qRpnunXlUS4zzIP0oPSTD7
+    ssl:
+      enabled: true
+  data:
+    mongodb:
+      uri: mongodb+srv://cutcap1999:CqZ9q39WWk4TJN4H@cluster0.ujreyzd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      database: journaldb
+      auto-index-creation: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ry775207@gmail.com
+    password: kpwp evyx xjyq jhfq
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /journal
+
+weather:
+  api:
+    key: b2550fc65043ce0716c80400af450ca6
+
+springdoc:
+  swagger-ui:
+    path: /api-docs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env,beans,threaddump,httptrace
+  endpoint:
+    health:
+      show-details: always
+
+
