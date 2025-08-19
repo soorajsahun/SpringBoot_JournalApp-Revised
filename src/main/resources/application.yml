@@ -1,21 +1,23 @@
 spring:
   redis:
-    host: redis-10358.c264.ap-south-1-1.ec2.redns.redis-cloud.com
-    port: 10358
-    username: default
-    password: A2IzvTWuD7qRpnunXlUS4zzIP0oPSTD7
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+    username: ${REDIS_USERNAME}
+    password: ${REDIS_PASSWORD}
     ssl:
       enabled: true
+
   data:
     mongodb:
-      uri: mongodb+srv://cutcap1999:CqZ9q39WWk4TJN4H@cluster0.ujreyzd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      uri: ${MONGO_URI}
       database: journaldb
       auto-index-creation: true
+
   mail:
     host: smtp.gmail.com
     port: 587
-    username: ry775207@gmail.com
-    password: kpwp evyx xjyq jhfq
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -24,13 +26,13 @@ spring:
             enable: true
 
 server:
-  port: 8080
+  port: ${PORT:8080}   # Render injects PORT automatically
   servlet:
     context-path: /journal
 
 weather:
   api:
-    key: b2550fc65043ce0716c80400af450ca6
+    key: ${WEATHER_API_KEY}
 
 springdoc:
   swagger-ui:
@@ -44,5 +46,3 @@ management:
   endpoint:
     health:
       show-details: always
-
-
