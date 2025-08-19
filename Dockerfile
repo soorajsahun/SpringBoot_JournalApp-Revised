@@ -1,14 +1,22 @@
-# Use official OpenJDK 8
-FROM openjdk:8-jdk-alpine
+# Use Maven + JDK to build
+FROM maven:3.9.3-openjdk-8 AS build
 
-# Set working directory
 WORKDIR /app
 
-# Copy the built jar file into the container
-COPY target/*.jar app.jar
+# Copy source code
+COPY pom.xml .
+COPY src ./src
 
-# Expose the port your Spring Boot app uses
+# Build the jar
+RUN mvn clean package -DskipTests
+
+# Use lightweight JDK for running
+FROM openjdk:8-jdk-alpine
+WORKDIR /app
+
+# Copy jar from build stage
+COPY --from=build /app/target/*.jar app.jar
+
 EXPOSE 8080
 
-# Run the Spring Boot jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
