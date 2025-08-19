@@ -1,5 +1,5 @@
-# Use Maven + JDK to build
-FROM maven:3.9.3-openjdk-8 AS build
+# Use Maven + JDK 8 to build
+FROM maven:3.9.3-eclipse-temurin-8 AS build
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ COPY src ./src
 # Build the jar
 RUN mvn clean package -DskipTests
 
-# Use lightweight JDK for running
+# Use lightweight JDK 8 for running
 FROM openjdk:8-jdk-alpine
 WORKDIR /app
 
