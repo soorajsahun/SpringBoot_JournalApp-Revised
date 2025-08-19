@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: springboot-journalapp
+    env: java
+    plan: free
+    region: oregon
+
+    buildCommand: "./mvnw clean package -DskipTests"
+    startCommand: "java -jar target/*.jar"
+
+    envVars:
+      - key: JAVA_VERSION
+        value: 17
